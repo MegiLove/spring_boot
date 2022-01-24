@@ -1,0 +1,7 @@
+package com.example.demo.db;
+
+//mybatis의 설정파일에 있는 sql을 요청하는 클래스
+public class DBManager {
+	//mybatis 설정파일에 있는 sql을 요청하려면
+	//SqlSession이 필요하다
+}

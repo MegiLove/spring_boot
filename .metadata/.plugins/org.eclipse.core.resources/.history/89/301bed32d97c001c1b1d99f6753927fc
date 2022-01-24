@@ -1,0 +1,10 @@
+package com.example.demo.vo;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Person {
+	private String name;
+	int age;
+}
