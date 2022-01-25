@@ -1,6 +1,10 @@
 INDEX VERSION 1.131
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1461375501.index
 \depttest\src\main\java
+C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1058659454.index
+\goods\src\main\java
+C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\805836054.index
+\board\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2170171180.index
 \booktest\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4000245635.index
