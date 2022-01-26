@@ -11,6 +11,10 @@
 	<h2>상품목록</h2>
 	<hr>
 	<a href="insertGoods">등록</a><br>
+	<form action="listGoods" method="post">
+		상품이름 : <input type="search" name="keyword">
+		<input type="submit" value="검색">
+	</form>
 	<table border="1" width="80%">
 		<tr>
 			<td>상품번호</td>
@@ -25,5 +29,23 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<hr>
+	
+	<c:forEach var="i" begin="1" end="${totalPage }">
+		<a href="listGoods?pageNUM=${i }">${i }</a>&nbsp;&nbsp;
+	</c:forEach>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

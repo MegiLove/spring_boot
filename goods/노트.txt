@@ -1,0 +1,4 @@
+select no,name,price,qty,fname from (
+select rownum num,no,name,price,qty,fname from 
+(select no,name,price,qty,fname from goods order by no))
+where num between 11 and 20;

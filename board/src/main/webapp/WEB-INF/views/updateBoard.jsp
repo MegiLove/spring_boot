@@ -13,6 +13,7 @@
 		<input type="hidden" name="no" value="${b.no }">
 		글제목 : <input type="text" name="title" value="${b.title }"><br>
 		작성자 : ${b.writer }<br>
+		글암호 : <input type="password" name="pwd"><br>
 		글내용 : <br>
 		<textarea rows="10" cols="80" name="content">${b.content }</textarea><br>
 		<input type="hidden" name="fname" value="${b.fname }">

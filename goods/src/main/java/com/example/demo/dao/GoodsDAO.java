@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -9,8 +10,16 @@ import com.example.demo.vo.GoodsVO;
 
 @Repository
 public class GoodsDAO {
-	public List<GoodsVO> findAll(){
-		return DBManager.findAll();
+	
+	public static int pageSIZE = 5;
+	public static int totalRecord;
+	public static int totalPage;
+	
+	
+	public List<GoodsVO> findAll(HashMap map){
+		totalRecord = DBManager.getTotalRecord(map);
+		totalPage = (int)Math.ceil( totalRecord / (double)pageSIZE);		
+		return DBManager.findAll(map);
 	}
 	
 	public int insert(GoodsVO g) {

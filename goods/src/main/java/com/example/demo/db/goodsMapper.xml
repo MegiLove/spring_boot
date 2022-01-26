@@ -4,7 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="goods">
   <select id="findAll" resultType="goodsVO">
-    select * from goods order by no
+    select no,name,price,qty,fname from (
+	select rownum num,no,name,price,qty,fname from 
+	(select no,name,price,qty,fname from goods 
+	<if test="keyword != null">
+		where name like '%'||#{keyword}||'%' 
+	</if>
+	order by no))
+	where num between #{start} and #{end}
   </select>
   
   <select id="findByNo" resultType="goodsVO">
@@ -19,7 +26,16 @@
   	update goods set name=#{name},price=#{price},qty=#{qty},fname=#{fname} where no=#{no}
   </update>
   
-  <delete id="delete" parameterType="goodsVO">
-	delete from goods where no=#{no}
+  <delete id="delete">
+  	delete goods where no=#{no}
   </delete>
+  
+  <select id="totalRecord" resultType="java.lang.Integer">
+  	select count(*) from goods 
+  	<if test="keyword != null">
+		where name like '%'||#{keyword}||'%' 
+	</if>
+  </select>
 </mapper>
+
+

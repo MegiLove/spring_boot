@@ -19,3 +19,8 @@
 	<a href="deleteGoods?no=${g.no }">삭제</a>
 </body>
 </html>
+
+
+
+
+
