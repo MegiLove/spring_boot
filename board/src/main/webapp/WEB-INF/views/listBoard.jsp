@@ -9,6 +9,12 @@
 </head>
 <body>
 	<h2>게시물 목록</h2>
+	
+	${member.name }님 로그인 하였습니다.
+	<a href="listBoard?writer=${member.id }">나의 글</a>
+	<a href="listBoard?writer=all">모든 글</a>
+	<br>
+	
 	<a href="insertBoard">등록</a><br>
 	<form action="listBoard" method="post">
 		<select name="searchColumn">

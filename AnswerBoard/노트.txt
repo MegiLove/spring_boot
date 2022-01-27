@@ -1,0 +1,1 @@
+alter table board add ip varchar2(20);

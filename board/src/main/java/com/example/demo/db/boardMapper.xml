@@ -5,9 +5,18 @@
 <mapper namespace="board">
   <select id="totalRecord" resultType="java.lang.Integer">
   	select count(*) from board 
-  	<if test="keyword != null">
-			where ${searchColumn} like '%'||#{keyword}||'%' 
-	</if>
+  		<if test="keyword != null">
+			where ${searchColumn} like '%'||#{keyword}||'%'  
+			<if test="writer != null and writer != 'all'">
+				and writer = #{writer}
+			</if> 
+		</if>		
+		
+		<if test="keyword == null">
+			<if test="writer != null and writer != 'all'">
+				where writer = #{writer}
+			</if>
+		</if>
   </select>
 
   <select id="findAll" resultType="boardVO">
@@ -15,8 +24,18 @@
 	select rownum num, no,title,writer,content,regdate,hit,fname,pwd,ip from
 	(select no,title,writer,content,regdate,hit,fname,pwd,ip from board 
 		<if test="keyword != null">
-			where ${searchColumn} like '%'||#{keyword}||'%' 
+			where ${searchColumn} like '%'||#{keyword}||'%'  
+			<if test="writer != null and writer != 'all'">
+				and writer = #{writer}
+			</if> 
+		</if>		
+		
+		<if test="keyword == null">
+			<if test="writer != null and writer != 'all'">
+				where writer = #{writer}
+			</if>
 		</if>
+		
 		<if test="orderColumn != null">
 			 order by ${orderColumn}
 		</if>

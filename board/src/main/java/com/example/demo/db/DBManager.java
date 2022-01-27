@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.example.demo.vo.BoardVO;
+import com.example.demo.vo.MemberVO;
 
 public class DBManager {
 	private static SqlSessionFactory factory;
@@ -28,6 +29,7 @@ public class DBManager {
 	
 	public static List<BoardVO> findAll(HashMap map){
 		SqlSession session = factory.openSession();
+		System.out.println("map"+map);
 		List<BoardVO> list= session.selectList("board.findAll", map);
 		session.close();
 		return list;
@@ -86,6 +88,24 @@ public class DBManager {
 		session.update("board.updateHit", no);
 		session.commit();
 		session.close();
+	}
+	
+	public static int insertMember(MemberVO m) {
+		SqlSession session = factory.openSession();
+		int re = session.insert("member.insert", m);
+		session.commit();
+		session.close();
+		return re;
+	}
+	
+	public static MemberVO isMember(String id, String pwd) {
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("pwd", pwd);
+		SqlSession session = factory.openSession();
+		MemberVO m = session.selectOne("member.isMember", map);
+		session.close();
+		return m;
 	}
 	
 }

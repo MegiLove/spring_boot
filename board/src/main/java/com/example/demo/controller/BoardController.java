@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.BoardDAO;
 import com.example.demo.vo.BoardVO;
+import com.example.demo.vo.MemberVO;
 
 import lombok.Data;
 import lombok.Setter;
@@ -35,10 +36,21 @@ public class BoardController {
 			String searchColumn, // 검색칼럼을 받아오기 위한 변수
 			String keyword,   //검색어를 받아오기 위한 변수
 			String orderColumn,//정렬칼럼을 받아 오기 위한 변수
+			String writer,
 			@RequestParam(value = "pageNUM", defaultValue = "1")  int pageNUM//페이지 번호를 받아오기 위한 변수
 			
 			) {
 	
+		
+		MemberVO m=(MemberVO) session.getAttribute("member");
+		System.out.println("list==>로그인한 회원의 이름:"+m.getName());
+		
+		
+		
+		if(writer == null && session.getAttribute("writer") != null) {
+			writer = (String)session.getAttribute("writer");
+		}
+		
 		
 		//만약에 새로운 정렬이 없고 세션에 정렬칼럼명이 저장되어 있다면
 		//세션에 저장된 정렬칼럼명을 읽어온다.
@@ -61,6 +73,7 @@ public class BoardController {
 		System.out.println("pageNUM:"+pageNUM);
 		System.out.println("검색칼럼:"+searchColumn);
 		System.out.println("검색어:|"+keyword+"|");
+		System.out.println("작성자:|"+writer+"|");
 //		if(orderColumn == null) {
 //			orderColumn = "no";
 //		}
@@ -78,6 +91,7 @@ public class BoardController {
 		map.put("keyword", keyword);
 		map.put("start", start);
 		map.put("end", end);
+		map.put("writer", writer);
 		
 		//dao를 통해 검색한 결과를 model에 저장한다.
 		//이대 findAll메소드에서 전체레코드수를 구하고 
@@ -97,6 +111,10 @@ public class BoardController {
 		if(keyword != null) {
 			session.setAttribute("searchColumn", searchColumn);
 			session.setAttribute("keyword", keyword);
+		}
+		
+		if(writer != null) {
+			session.setAttribute("writer", writer);
 		}
 	}
 	
