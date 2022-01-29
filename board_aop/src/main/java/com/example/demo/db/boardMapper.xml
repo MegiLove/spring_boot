@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+  <select id="findAll" resultType="boardVO">
+    select * from board order by b_ref desc, b_step
+  </select>
+  
+  <insert id="insert" parameterType="boardVO">
+  	insert into board(no,title,writer,pwd,content,regdate,
+  	hit,fname,fsize,b_ref,b_level,b_step,ip) 
+  	values(#{no},#{title},#{writer},#{pwd},#{content},sysdate,
+  	0,#{fname},#{fsize},#{b_ref},#{b_level},#{b_step},#{ip})
+  </insert>
+  
+  <select id="getNextNo" resultType="java.lang.Integer">
+  	select nvl(max(no),0)+1 from board
+  </select>
+  
+  <select id="findByNo" resultType="boardVO">
+  	select * from board where no=#{no}
+  </select>
+  
+  <update id="updateStep">
+  	update board set b_step =  b_step + 1 where b_ref=#{b_ref} and b_step > #{b_step}
+  </update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
