@@ -1,6 +1,0 @@
-package com.example.demo.vo;
-
-public class Person {
-	private String name;
-	int age;
-}
