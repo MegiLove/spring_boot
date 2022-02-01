@@ -1,0 +1,32 @@
+컨트롤러의 모든 메소드에 aop를 설정하여 
+	해당 메소드가 
+	오류가 발생한 경우에 
+	오류메세지의 내용과, 요청한 uri, 요청시간을 
+	데이터베이스에 기록하는 
+	after Throwing  어드바이스를 
+	작성하여 결과를 확인 해 봅니다.
+	
+상품수량에 숫자가 아닌 값을 입력한 경우는 
+컨트롤러로 가기전에 오류가 발생합니다.
+
+이번 실험에서는 
+상품번호를 의도적으로 중복이 되도록 실험합니다.
+
+또, 메세지 위하여 글자수를 1000자로 늘여 줍니다.
+	
+create table exceptionlog(
+	no number primary key,
+	msg varchar2(1000),
+	uri varchar2(20),
+	time date
+);
+
+create sequence seq_exceptionlog;
+----------------------------------------------------
+
+
+----------------------------------------------------
+select no,name,price,qty,fname from (
+select rownum num,no,name,price,qty,fname from 
+(select no,name,price,qty,fname from goods order by no))
+where num between 11 and 20;
