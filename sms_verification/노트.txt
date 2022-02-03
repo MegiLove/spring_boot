@@ -1,0 +1,22 @@
+create table member(
+	id varchar2(20) primary key,
+	pwd varchar2(20),
+	name varchar2(20),
+	phone varchar2(20),
+	email varchar2(50),
+	total number
+);
+
+
+insert into member values('','','김수연','','',);
+insert into member values('kkk','2222','임하연','01029853667','kkk@naver.com',120);
+
+연습) 모든 회원에게 
+		이번달 요금을 문자로 전송하는 
+		서비스를 구현해 봅니다.
+		
+		완성하면 "3"
+		
+		
+update member set phone  ='01080072464' where id = 'apple';
+
