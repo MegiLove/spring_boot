@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="card">
+  <select id="selectMemberCardFee" resultType="memberCardFee">   
+	select member.id,name,email,nvl(c.total,0) total from 
+	member left outer join (select id,sum(amount) total from card_fee group by id) c
+	on member.id = c.id
+  </select>
+</mapper>

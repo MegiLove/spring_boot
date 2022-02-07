@@ -15,11 +15,17 @@ C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1461375501.inde
 \depttest\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2463374662.index
 \sms_test\src\main\java
+C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1877926026.index
+\sms_test2\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2170171180.index
 \booktest\src\main\java
+C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4176818563.index
+\mail_verification\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2260271724.index
 \AnswerBoard\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\973673630.index
 \sms_verification\src\main\java
+C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2380068320.index
+\security_test02\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1764329081.index
 \after_throwing\src\main\java
