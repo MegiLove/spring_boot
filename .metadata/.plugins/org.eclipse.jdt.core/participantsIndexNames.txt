@@ -3,6 +3,8 @@ C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4025467989.inde
 \goods_aop_error\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\805836054.index
 \board\src\main\java
+C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1541510925.index
+\security_depttest\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2827217058.index
 \board_aop\src\main\java
 C:\stsTest\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4000245635.index
