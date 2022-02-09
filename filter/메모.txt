@@ -1,0 +1,9 @@
+create table member_security as select * from member;
+
+update member set pwd = id;
+
+- 시큐리티를 이용하지 않고 로그인 처리를 구현합니다.
+- 필터를 이용하여 insertDept.do는 로그인을 해야만 서비스가 가능하도록 
+	"인증"에 처리를 구현해 봅니다.
+	
+완성하면 "1"
