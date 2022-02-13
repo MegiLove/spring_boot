@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({url:"listBook",success:function(data){
+			$.each(data, function(){
+				let tr = $("<tr></tr>").attr("bookid",this.bookid);
+				$(tr).append( $("<td></td>").html(this.bookid)   );
+				$(tr).append( $("<td></td>").html(this.bookname)   );
+				$(tr).append( $("<td></td>").html(this.publisher)   );
+				$(tr).append( $("<td></td>").html(this.price)   );
+				
+				$("#bookList").append(tr);
+				/*
+				$(tr).click(function(){
+					let bookid = $(this).attr("bookid");
+					alert(bookid);
+				});*/
+			});
+		}});
+		
+		$(document).on("click","tr",function(){
+			
+			$("#customerList").empty();//자식노드를 모두 삭제합니다.
+			
+			let bookid = $(this).attr("bookid");
+			let data = {bookid:bookid};
+			$.ajax({url:"findByBookID",data:data, success:function(data){
+				$.each(data, function(){
+					let tr = $("<tr></tr>");
+					$(tr).append( $("<td></td>").html( this.custid ) );
+					$(tr).append( $("<td></td>").html( this.name ) );
+					$(tr).append( $("<td></td>").html( this.address ) );
+					$(tr).append( $("<td></td>").html( this.phone ) );
+					$("#customerList").append(tr);
+				});
+			}});
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<table border="1" width="80%">
+		<thead>
+			<tr>
+				<td>도서번호</td>
+				<td>도서명</td>
+				<td>출판사</td>
+				<td>가격</td>
+			</tr>
+		</thead>
+		<tbody id="bookList"></tbody>
+	</table>
+	<hr>
+	<table border="1" width="80%">
+		<thead>
+			<tr>
+				<td>고객번호</td>
+				<td>고객명</td>
+				<td>주소</td>
+				<td>전화</td>
+			</tr>
+		</thead>
+		<tbody id="customerList"></tbody>
+	</table>
+</body>
+</html>
+
+
+

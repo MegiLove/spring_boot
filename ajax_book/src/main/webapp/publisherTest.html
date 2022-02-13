@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let publisher;
+		$.ajax({url:"listPublisher",success:function(arr){
+			$.each(arr, function(){
+				$("#publisherList").append( $("<li></li>").html(this) );
+			});
+		}});
+		
+		$(document).on("click","li",function(){
+			$("#bookList").empty();
+			publisher = $(this).html();
+			$("#publisher").html(publisher);
+			let data = {publisher:publisher};
+			$.ajax({url:"findByPublisher",data:data,success:function(data){
+				$.each(data, function(){
+					let tr = $("<tr></tr>").attr({bookid:this.bookid, bookname:this.bookname});
+					$(tr).append( $("<td></td>").html( this.bookid )  );
+					$(tr).append( $("<td></td>").html( this.bookname )  );
+					$(tr).append( $("<td></td>").html( this.price )  );
+					$("#bookList").append(tr);
+				});
+			}});
+		});
+		
+		$(document).on("click", "tr", function(){
+			$("#customerList").empty();
+			let bookid = $(this).attr("bookid");
+			let bookname = $(this).attr("bookname");
+			$("#publisher2").html(publisher);
+			$("#bookName").html(bookname);
+			let data = {bookid:bookid};
+			$.ajax({url:"findByBookID",data:data,success:function(data){
+				$.each(data, function(){
+					let tr= $("<tr></tr>");
+					$(tr).append(  $("<td></td>").html(this.custid)   );
+					$(tr).append(  $("<td></td>").html(this.name)   );
+					$(tr).append(  $("<td></td>").html(this.address)   );
+					$(tr).append(  $("<td></td>").html(this.phone)   );
+					$("#customerList").append(tr);
+				});
+			}});
+			
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>출판사 목록</h2>
+	<ul id="publisherList"></ul>
+	<hr>
+	<h3><span id="publisher"></span> 출판사에서 출간하는 도서 목록</h3>
+	<table border="1" width="80%">
+		<thead>
+			<tr>
+				<td>도서번호</td>
+				<td>도서명</td>
+				<td>가격</td>
+			</tr>
+		</thead>
+		<tbody id="bookList"></tbody>
+	</table>
+	
+	<hr>
+	<h3><span id="publisher2"></span> 출판사의 <span id="bookName"></span>를 구매한 고객목록</h3>
+	<table border="1" width="80%">
+		<thead>
+			<tr>
+				<td>고객번호</td>
+				<td>이름</td>
+				<td>주소</td>
+				<td>전화</td>
+			</tr>			
+		</thead>
+		<tbody id="customerList"></tbody>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
