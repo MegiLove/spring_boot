@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./jquery-ui/jquery-ui.css">
+<style type="text/css">
+	body{
+		font-size: 62.5%;
+	
+	}
+	
+	h1{
+		text-align: center;
+	}
+	
+	input[type=text],label {
+		margin-bottom: 12px;
+		padding: .4em;
+		width: 95%;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="./jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({url:"listSchedule",success:function(list){
+			$.each(list, function(){
+				let event_name = this.event_name;
+				let event_date = this.event_date;
+				$("#output").append(  $("<h1></h1>").html( event_name + ":" + event_date  ) ) ;
+			});
+		}});
+		
+		
+		
+		$("#f").dialog({
+			autoOpen:false,
+			modal:true,
+			buttons:{
+				submit:function(){
+					let eventName = $("#event_name").val();
+					let eventDate = $("#event_date").val();
+					
+					let data = {event_name:eventName,
+								event_date:eventDate};
+					$.ajax({
+						url:"insertSchedule",
+						data:data,
+						success:function(re){
+							console.log(re);
+						}
+					})
+					
+					$("#output").append( $("<h1></h1>").html(eventName + ":" + eventDate));
+					
+					$("#event_name").val("");
+					$("#event_date").val("");
+					$("#f").dialog("close");
+				},
+				reset:function(){
+					$("#event_name").val("");
+					$("#event_date").val("");
+				},
+				cancle:function(){
+					$("#event_name").val("");
+					$("#event_date").val("");
+					$("#f").dialog("close");
+				}
+			}
+		});
+		$("#event_date").datepicker({
+			dateFormat:"yy/mm/dd",
+			numberOfMonths:3
+		});
+		
+		$("#open_button").click(function(){
+			$("#f").dialog("open");
+		});
+	});
+</script>
+</head>
+<body>
+	<h1 id="open_button">일정 등록</h1>
+	<hr>
+	<div id="output"></div>
+	<div id="f">		
+		<label for="event_name">일정 이름</label>
+		<input type="text" id="event_name">
+		<label for="event_date">날짜</label>
+		<input type="text" id="event_date">
+	</div>
+	
+	<hr>
+	<input type="text">
+</body>
+</html>

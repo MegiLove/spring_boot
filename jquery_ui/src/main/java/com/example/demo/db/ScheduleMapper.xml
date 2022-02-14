@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="schedule">
+  <insert id="insert" parameterType="scheduleVO">
+  	insert  into schedule values(seq_schedule.nextval,#{event_name},#{event_date})
+  </insert>
+  
+  <select id="findAll" resultType="scheduleVO">
+  	select event_name, to_char(event_date,'yyyy/mm/dd') event_date from schedule
+  </select>
+</mapper>

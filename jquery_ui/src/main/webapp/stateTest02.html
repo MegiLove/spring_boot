@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./jquery-ui/jquery-ui.css">
+<style type="text/css">
+	.box{
+		padding: 5px;
+	}
+	
+	.box p{
+		margin: 0px;
+		padding: 5px;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="./jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#radio").buttonset();
+	
+	function reset(){
+		let resetClass = "ui-corner-all ui-widget-content box";
+		$("#output").attr("class",resetClass);
+	}
+	
+	reset();
+	
+	$("button").click(function(){
+		reset();
+	});
+	
+	$("#radio > input").change(function(){
+		reset();
+		$("#output").addClass("ui-state-"+ $(this).val() );
+	});
+})
+</script>
+</head>
+<body>
+	<div id="radio">
+		<input type="radio" name="theme" id="highlight" value="highlight">
+		<label for="highlight">highlight</label>
+		<input type="radio" name="theme" id="error" value="error">
+		<label for="error">error</label>		
+		<input type="radio" name="theme" id="error_text" value="error_text">
+		<label for="error_text">error_text</label>		
+		<input type="radio" name="theme" id="disabled" value="disabled">
+		<label for="disabled">disabled</label>		
+		<button>RESET</button>		
+	</div>
+	
+	<div id="output">
+		<p>국민의당 안철수 대선 후보의 야권 단일화 제안과 관련해 국민의힘은 "'국민경선'이라 지칭해 제안한 방식은 정권 교체를 원하는 국민적 요구에 오히려 역행할 위험을 안고 있다"는 입장을 내놨습니다.
+
+선대본부 이양수 수석대변인은 "안 후보가 밝힌 야권 통합 원칙은 정권 교체를 열망하는 국민적 요구를 수용한 것으로 긍정 평가한다"면서도 이같이 말했습니다.
+
+통합 논의는 긍정적이지만 여론조사 방식의 단일화 제안에 대해서는 부정적인 입장을 밝힌 것으로 보입니다.
+
+이 수석대변인은 "윤 후보와 안 후보 간 지지율 격차가 큰 상태에서 정권 교체를 바라지 않는 민주당과 이재명 후보의 농간에 넘어가 야권 분열책으로 악용될 우려가 크기 때문"이라고 덧붙였습니다.s</p>
+	</div>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

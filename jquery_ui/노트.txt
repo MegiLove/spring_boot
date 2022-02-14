@@ -1,0 +1,7 @@
+create table schedule(
+	no number primary key,
+	event_name varchar2(100),
+	event_date date
+);
+
+create sequence seq_schedule;
