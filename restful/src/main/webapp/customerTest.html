@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({url:"listCustomer",success:function(arr){
+			$.each(arr, function(){
+				let tr = $("<tr></tr>").attr("custid",this.custid);
+				$(tr).append( $("<td></td>").html(this.custid) );
+				$(tr).append( $("<td></td>").html(this.name) );
+				$("tbody").append(tr);
+			});
+		}});	
+		
+		$("tbody").on("click","tr",function(){
+			let custid = $(this).attr("custid");
+			url= "detailCustomer/"+custid;
+			$.ajax({
+				url:url,
+				success:function(c){
+					$("#detail").empty();
+					let p1 = $("<p></p>").html("고객번호:"+c.custid);
+					let p2 = $("<p></p>").html("고객이름:"+c.name);
+					let p3 = $("<p></p>").html("주소:"+c.address);
+					let p4 = $("<p></p>").html("전화:"+c.phone);
+					$("#detail").append(p1,p2,p3,p4);
+				}
+			})
+		});
+	});
+	
+	
+</script>
+</head>
+<body>
+	<table border="1" width="60%">
+		<thead>
+			<tr>
+				<td>고객번호</td>
+				<td>고객이름</td>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	<hr>
+	<div id="detail"></div>
+</body>
+</html>
