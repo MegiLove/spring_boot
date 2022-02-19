@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>도서목록</h2>
+	<table border="1" width="80%">
+		<tr>
+			<th>도서번호</th>
+			<th>도서이름</th>
+		</tr>
+		<tr th:each="b : ${list}">
+			<td th:text="${b.bookid}"></td>
+			<td>
+				<!-- <a th:href="@{'/details/'+${user.login}(orderId=${o.id})}">view</a> -->
+				<a th:href="@{'/detailBook/'+${b.bookid}}" th:text="${b.bookname}"></a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

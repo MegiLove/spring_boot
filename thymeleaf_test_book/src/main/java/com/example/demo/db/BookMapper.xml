@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+  <select id="findAll" resultType="bookVO">
+    select * from book order by bookid
+  </select>
+  
+  <select id="findByBookID" resultType="bookVO">
+  	select * from book where bookid=#{bookid}
+  </select>
+  
+  <update id="updateBook" parameterType="bookVO">
+  	update book set bookname=#{bookname},publisher=#{publisher},price=#{price} where bookid=#{bookid}
+  </update>
+  
+  <delete id="deleteBook">
+  	delete book where bookid=#{bookid}
+  </delete>
+</mapper>

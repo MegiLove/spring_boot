@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>도서상세</h2>
+	<hr>
+	<p>도서번호 : <span th:text="${b.bookid}"></span></p>
+	<p>도서이름 : <span th:text="${b.bookname}"></span></p>
+	<p>출판사 :   <span th:text="${b.publisher}"></span></p>
+	<p>가격 :    <span th:text="${b.price}"></span></p>
+	<a th:href="@{'/updateBook/'+${b.bookid}}" th:text="수정"></a>
+	<a th:href="@{'/deleteBook/'+${b.bookid}}" th:text="삭제"></a>
+</body>
+</html>
