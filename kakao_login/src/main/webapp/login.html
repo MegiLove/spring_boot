@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript">
+	Kakao.init("c3b87e9a5c7559a0c0531a541d3a8347");
+	function kakaoLogin(){
+		Kakao.Auth.loginForm({
+			scope:"profile_nickname,account_email,gender,age_range,birthday",
+			success:function(authObj){
+				console.log(authObj);
+				Kakao.API.request({
+					url:"/v2/user/me",
+					success:function(res){
+						console.log(res);
+						let email = res.kakao_account.email;
+						location.href="/KakaLoginOK/"+email;
+					}
+				});
+			}
+		});
+	}
+</script>
+</head>
+<body>
+<a href="javascript:kakaoLogin()">카카오 로그인</a>
+</body>
+</html>
